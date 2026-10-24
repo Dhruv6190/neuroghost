@@ -1,0 +1,14 @@
+# Core (required)
+numpy>=1.24
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.5
+requests>=2.31
+
+# Recommended (better detection + real vector DB). NeuroGhost falls back to
+# lightweight local versions automatically if these are not installed.
+sentence-transformers>=2.7
+chromadb>=0.5
+
+# Optional: on-chain audit log and real testnet wallet
+web3>=6.15

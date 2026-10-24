@@ -1,0 +1,44 @@
+{
+  "user_id": "usr_demo_01",
+  "baseline_persona": [
+    "The user runs a small company treasury and pays vendor invoices every month.",
+    "Vendors are paid only to wallet addresses the user has approved in advance.",
+    "The user reviews monthly reports, invoices, meeting notes and vendor updates.",
+    "Large or unusual payments always need the user's explicit approval.",
+    "The agent summarises emails, tracks invoices and schedules meetings."
+  ],
+  "scoring": {
+    "weights": { "directive": 0.50, "drift": 0.30, "money": 0.20 },
+    "threshold": 0.55,
+    "trusted_threshold": 0.85,
+    "obfuscation_counts_as_directive": true
+  },
+  "trusted_sources": ["user", "user_chat", "admin"],
+  "embedding": {
+    "backend": "auto",
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "dimensions": 384
+  },
+  "vector_store": { "backend": "auto" },
+  "data_dir": ".neuroghost",
+  "tools": {
+    "privileged": ["transfer_funds", "approve_token", "swap_tokens", "run_bash_command", "update_credentials", "write_file"],
+    "money": ["transfer_funds", "approve_token", "swap_tokens"]
+  },
+  "transactions": {
+    "allowlist": {
+      "0x1111111111111111111111111111111111111111": "Acme Cloud Hosting",
+      "0x2222222222222222222222222222222222222222": "Beta Design Studio"
+    },
+    "per_transaction_limit": 1.0,
+    "per_day_limit": 2.0,
+    "currency": "ETH"
+  },
+  "chain": {
+    "enabled": false,
+    "rpc_url_env": "NEUROGHOST_RPC_URL",
+    "private_key_env": "NEUROGHOST_CHAIN_KEY",
+    "contract_address": "",
+    "chain_id": 11155111
+  }
+}

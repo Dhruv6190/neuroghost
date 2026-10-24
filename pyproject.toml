@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neuroghost"
+version = "0.1.0"
+description = "Write-time memory firewall and transaction guard for AI agents with crypto wallets"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "fastapi>=0.110", "uvicorn[standard]>=0.29", "pydantic>=2.5", "requests>=2.31"]
+
+[project.optional-dependencies]
+full = ["sentence-transformers>=2.7", "chromadb>=0.5"]
+chain = ["web3>=6.15"]
+
+[project.scripts]
+neuroghost = "neuroghost.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["neuroghost*"]
+
+[tool.setuptools.package-data]
+neuroghost = ["dashboard/*.html"]

@@ -1,0 +1,25 @@
+{
+  "_note": "Patterns run on a cleaned, lower-cased, homoglyph-folded copy of the text. Any match sets H = 1.",
+  "persistent_command": [
+    "\\b(always|from now on|henceforth|going forward|in (all )?future|permanently|every time|by default)\\b.{0,60}\\b(send|route|transfer|pay|use|forward|approve|execute|run|treat|set|sign|share)\\b",
+    "\\b(remember|note) (that )?(you|the agent) (must|should|will)\\b",
+    "\\byou (must|shall|are required to)\\b.{0,40}\\b(always|never|send|transfer|pay|approve|ignore)\\b"
+  ],
+  "instruction_override": [
+    "\\b(ignore|disregard|forget|override|bypass)\\b.{0,30}\\b(previous|prior|earlier|above|all|existing|any)\\b.{0,25}\\b(instructions?|rules?|constraints?|guidelines?|prompts?|policies|limits?)\\b",
+    "\\byou are now\\b",
+    "\\bnew (system )?instructions?\\b",
+    "\\bsystem prompt\\b"
+  ],
+  "payment_redirect": [
+    "\\b(wallet|payout|refund|beneficiary|payee|bank account|deposit address|receiving address|settlement address)\\b.{0,50}\\b(is now|now is|updated|changed|moved|switched|replaced|migrated|new|default)\\b",
+    "\\b(new|updated|default|changed)\\b.{0,30}\\b(wallet|payout|refund|beneficiary|payee|deposit address|receiving address)\\b",
+    "\\b(send|route|transfer|pay|forward|redirect|sweep|settle)\\b.{0,60}\\b(to|into)\\b.{0,20}(0x[a-f0-9]{6,}|[a-z0-9-]+\\.eth\\b)"
+  ],
+  "confirmation_bypass": [
+    "\\b(never|don't|do not|no need to|without|skip|stop)\\b.{0,30}\\b(ask|asking|prompt|prompting|confirm|confirmation|approval|approving|verify|verification|notify|notifying|review)\\b"
+  ],
+  "secrecy": [
+    "\\b(do not|don't|never)\\b.{0,20}\\b(tell|inform|mention|reveal|show|alert)\\b.{0,20}\\b(the )?(user|owner|anyone|admin|team)\\b"
+  ]
+}
